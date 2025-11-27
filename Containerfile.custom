@@ -1,0 +1,10 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    nano \
+    bash \
+    && apt-get clean
+
+RUN echo "Imagen personalizada para el proyecto de Sistemas Operativos" > /info.txt
+CMD ["bash"]
