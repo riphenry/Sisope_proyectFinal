@@ -1,0 +1,24 @@
+graph TD
+    %% Estilos para que se parezca al original (texto alineado a la izquierda)
+    classDef box fill:#0f111a,stroke:#00ff41,stroke-width:2px,color:#00ff41,text-align:left;
+    classDef title font-weight:bold,font-size:16px,text-align:center;
+
+    %% Nodos
+    User["<div class='title'>Usuario (PC)</div><hr><b>Navegador:</b><br>- http://localhost:3000 → Chat de texto<br>- http://localhost:7860 → Generación de imágenes<br><b>Terminal:</b> docker ps, logs, etc."]
+    
+    WebUI["<div class='title'>Open WebUI</div><hr><b>Puerto:</b> 3000<br><b>Función:</b> Hub central<br><b>Conecta con:</b><br>- Ollama (texto)<br>- Stable Diffusion"]
+    
+    Ollama["<div class='title'>Ollama</div><hr><b>Puerto:</b> 11434<br><b>Modelo:</b> phi3:mini<br><b>Volumen:</b> ollama-data<br><b>Función:</b> texto"]
+    
+    SD["<div class='title'>Stable Diffusion</div><hr><b>Puerto:</b> 7860<br><b>Motor imágenes</b><br><b>Volumen:</b> sd-data<br><b>Función:</b> imágenes"]
+
+    %% Conexiones
+    User --> WebUI
+    WebUI --> Ollama
+    WebUI --> SD
+
+    %% Aplicar estilos
+    class User,WebUI,Ollama,SD box;
+    
+    %% Estilo de las flechas (Link Style)
+    linkStyle default stroke:#00ff41,stroke-width:2px;
